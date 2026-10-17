@@ -1,0 +1,10 @@
+{
+  "schema_version": "ssr.chat-event.v1",
+  "ingest_id": "ing-2026-0002",
+  "message_id": "msg-2026-0002",
+  "occurred_at": "2026-10-17T09:31:00Z",
+  "conversation_id": "conv-demo-1",
+  "source": { "platform": "example-chat", "channel_id": "channel-demo" },
+  "actor": { "actor_id": "viewer-17", "display_name": "範例觀眾", "role": "viewer" },
+  "text": "灰燼狐的進化道具在哪裡取得？另外東京現在會下雨嗎？"
+}

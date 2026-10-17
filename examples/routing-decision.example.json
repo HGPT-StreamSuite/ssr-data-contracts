@@ -1,0 +1,8 @@
+{
+  "schema_version": "ssr.routing-decision.v1",
+  "ingest_id": "ing-2026-0003",
+  "message_id": "msg-2026-0003",
+  "disposition": "not_triggered",
+  "next_step": "fixed_sop",
+  "reason_codes": ["no_question_or_wake_signal"]
+}

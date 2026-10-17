@@ -1,0 +1,21 @@
+{
+  "schema_version": "ssr.query-result.v1",
+  "query_id": "query-2026-0002",
+  "run_id": "run-2026-0002",
+  "message_id": "msg-2026-0002",
+  "question_id": "q-1",
+  "query_type": "game_item",
+  "status": "ok",
+  "materials": [
+    {
+      "material_id": "mat-demo-1",
+      "title": "灰燼狐進化道具",
+      "content": "範例資料：於霧港的巡守商人處兌換。",
+      "source_ids": ["src-demo-1"],
+      "knowledge_version": "knowledge-demo-1"
+    }
+  ],
+  "sources": [
+    { "source_id": "src-demo-1", "source_type": "wiki", "locator": "wiki://items/ash-fox-evolution", "observed_at": "2026-10-17T09:30:00Z" }
+  ]
+}

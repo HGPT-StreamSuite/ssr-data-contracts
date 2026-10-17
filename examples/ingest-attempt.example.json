@@ -1,0 +1,8 @@
+{
+  "schema_version": "ssr.ingest-attempt.v1",
+  "ingest_id": "ing-2026-0001",
+  "received_at": "2026-10-17T09:30:00Z",
+  "source": { "platform": "example-chat", "channel_id": "channel-demo" },
+  "raw_event": { "event": "message", "author": "viewer-17", "body": "" },
+  "validation": { "status": "invalid", "reason_codes": ["missing_text"] }
+}

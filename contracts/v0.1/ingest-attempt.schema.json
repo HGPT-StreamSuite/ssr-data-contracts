@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Ingest Attempt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ingest_id", "received_at", "source", "raw_event", "validation"],
+  "properties": {
+    "schema_version": { "const": "ssr.ingest-attempt.v1" },
+    "ingest_id": { "type": "string", "minLength": 1 },
+    "received_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform"],
+      "properties": {
+        "platform": { "type": "string", "minLength": 1 },
+        "channel_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "raw_event": { "type": "object" },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason_codes"],
+      "properties": {
+        "status": { "enum": ["valid", "invalid"] },
+        "reason_codes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "normalized_event": { "$ref": "chat-event.schema.json" }
+  }
+}

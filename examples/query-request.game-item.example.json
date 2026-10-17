@@ -1,0 +1,9 @@
+{
+  "schema_version": "ssr.query-request.v1",
+  "query_id": "query-game-item-0001",
+  "run_id": "run-queries-0001",
+  "message_id": "msg-queries-0001",
+  "question_id": "q-game-item",
+  "query_type": "game_item",
+  "query_text": "範例道具在哪裡取得？"
+}

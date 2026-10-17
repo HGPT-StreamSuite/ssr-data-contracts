@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Answer Prompt Input v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "message_id", "context_snapshot", "analysis", "query_results"],
+  "properties": {
+    "schema_version": { "const": "ssr.answer-prompt-input.v1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "context_snapshot": { "$ref": "context-snapshot.schema.json" },
+    "analysis": { "$ref": "question-analysis.schema.json" },
+    "query_results": { "type": "array", "items": { "$ref": "query-result.schema.json" } }
+  }
+}

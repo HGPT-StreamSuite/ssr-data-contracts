@@ -1,0 +1,11 @@
+{
+  "schema_version": "ssr.context-snapshot.v1",
+  "snapshot_id": "ctx-2026-0042",
+  "conversation_id": "conv-demo-1",
+  "source": "ssr-conversation-store",
+  "generated_at": "2026-10-17T09:31:01Z",
+  "messages": [
+    { "message_id": "msg-2026-0040", "occurred_at": "2026-10-17T09:29:00Z", "role": "viewer", "text": "我最近開始玩灰燼旅人。" },
+    { "message_id": "msg-2026-0041", "occurred_at": "2026-10-17T09:29:30Z", "role": "streamer", "text": "這個角色可以在霧港附近找到。" }
+  ]
+}

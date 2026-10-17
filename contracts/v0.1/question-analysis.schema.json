@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Question Analysis v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "analysis_id", "run_id", "message_id", "context_snapshot_id", "questions"],
+  "properties": {
+    "schema_version": { "const": "ssr.question-analysis.v1" },
+    "analysis_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "context_snapshot_id": { "type": "string", "minLength": 1 },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question_id", "query_type", "question_text"],
+        "properties": {
+          "question_id": { "type": "string", "minLength": 1 },
+          "query_type": { "enum": ["weather", "person", "game_info", "game_guide", "game_item"] },
+          "question_text": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

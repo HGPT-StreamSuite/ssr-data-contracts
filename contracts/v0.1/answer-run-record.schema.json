@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Answer Run Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "message_id", "started_at", "status", "query_executions"],
+  "properties": {
+    "schema_version": { "const": "ssr.answer-run-record.v1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["running", "completed", "failed"] },
+    "context_snapshot_id": { "type": "string", "minLength": 1 },
+    "query_executions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["query_id", "query_type", "status"],
+        "properties": {
+          "query_id": { "type": "string", "minLength": 1 },
+          "query_type": { "enum": ["weather", "person", "game_info", "game_guide", "game_item"] },
+          "status": { "enum": ["ok", "no_match", "unavailable", "error"] }
+        }
+      }
+    },
+    "gap_record_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  }
+}

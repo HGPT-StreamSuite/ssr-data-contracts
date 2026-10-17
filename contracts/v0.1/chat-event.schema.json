@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Chat Event v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ingest_id", "message_id", "occurred_at", "conversation_id", "source", "actor", "text"],
+  "properties": {
+    "schema_version": { "const": "ssr.chat-event.v1" },
+    "ingest_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "conversation_id": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "channel_id"],
+      "properties": {
+        "platform": { "type": "string", "minLength": 1 },
+        "channel_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_id", "role"],
+      "properties": {
+        "actor_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string" },
+        "role": { "enum": ["viewer", "streamer", "assistant"] }
+      }
+    },
+    "text": { "type": "string", "minLength": 1 }
+  }
+}

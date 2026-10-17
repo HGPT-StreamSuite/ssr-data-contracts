@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Routing Decision v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ingest_id", "disposition", "next_step", "reason_codes"],
+  "properties": {
+    "schema_version": { "const": "ssr.routing-decision.v1" },
+    "ingest_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "disposition": { "enum": ["invalid", "not_triggered", "triggered"] },
+    "next_step": { "enum": ["fixed_sop", "question_analysis"] },
+    "reason_codes": { "type": "array", "items": { "type": "string" } }
+  }
+}

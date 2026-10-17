@@ -1,0 +1,9 @@
+{
+  "schema_version": "ssr.query-request.v1",
+  "query_id": "query-weather-0001",
+  "run_id": "run-queries-0001",
+  "message_id": "msg-queries-0001",
+  "question_id": "q-weather",
+  "query_type": "weather",
+  "query_text": "東京現在會下雨嗎？"
+}

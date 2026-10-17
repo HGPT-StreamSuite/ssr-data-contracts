@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Conversation Context Snapshot v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "snapshot_id", "conversation_id", "source", "generated_at", "messages"],
+  "properties": {
+    "schema_version": { "const": "ssr.context-snapshot.v1" },
+    "snapshot_id": { "type": "string", "minLength": 1 },
+    "conversation_id": { "type": "string", "minLength": 1 },
+    "source": { "const": "ssr-conversation-store" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["message_id", "occurred_at", "role", "text"],
+        "properties": {
+          "message_id": { "type": "string", "minLength": 1 },
+          "occurred_at": { "type": "string", "format": "date-time" },
+          "role": { "enum": ["viewer", "streamer", "assistant"] },
+          "text": { "type": "string" }
+        }
+      }
+    }
+  }
+}

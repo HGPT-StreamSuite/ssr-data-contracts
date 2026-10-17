@@ -1,0 +1,11 @@
+{
+  "schema_version": "ssr.query-result.v1",
+  "query_id": "query-2026-0003",
+  "run_id": "run-2026-0002",
+  "message_id": "msg-2026-0002",
+  "question_id": "q-2",
+  "query_type": "weather",
+  "status": "unavailable",
+  "materials": [],
+  "sources": []
+}

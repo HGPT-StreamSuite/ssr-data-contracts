@@ -1,0 +1,55 @@
+{
+  "schema_version": "ssr.answer-prompt-input.v1",
+  "run_id": "run-2026-0002",
+  "message_id": "msg-2026-0002",
+  "context_snapshot": {
+    "schema_version": "ssr.context-snapshot.v1",
+    "snapshot_id": "ctx-2026-0042",
+    "conversation_id": "conv-demo-1",
+    "source": "ssr-conversation-store",
+    "generated_at": "2026-10-17T09:31:01Z",
+    "messages": [
+      { "message_id": "msg-2026-0040", "occurred_at": "2026-10-17T09:29:00Z", "role": "viewer", "text": "我最近開始玩灰燼旅人。" },
+      { "message_id": "msg-2026-0041", "occurred_at": "2026-10-17T09:29:30Z", "role": "streamer", "text": "這個角色可以在霧港附近找到。" }
+    ]
+  },
+  "analysis": {
+    "schema_version": "ssr.question-analysis.v1",
+    "analysis_id": "analysis-2026-0002",
+    "run_id": "run-2026-0002",
+    "message_id": "msg-2026-0002",
+    "context_snapshot_id": "ctx-2026-0042",
+    "questions": [
+      { "question_id": "q-1", "query_type": "game_item", "question_text": "灰燼狐的進化道具在哪裡取得？" },
+      { "question_id": "q-2", "query_type": "weather", "question_text": "東京現在會下雨嗎？" }
+    ]
+  },
+  "query_results": [
+    {
+      "schema_version": "ssr.query-result.v1",
+      "query_id": "query-2026-0002",
+      "run_id": "run-2026-0002",
+      "message_id": "msg-2026-0002",
+      "question_id": "q-1",
+      "query_type": "game_item",
+      "status": "ok",
+      "materials": [
+        { "material_id": "mat-demo-1", "title": "灰燼狐進化道具", "content": "範例資料：於霧港的巡守商人處兌換。", "source_ids": ["src-demo-1"], "knowledge_version": "knowledge-demo-1" }
+      ],
+      "sources": [
+        { "source_id": "src-demo-1", "source_type": "wiki", "locator": "wiki://items/ash-fox-evolution", "observed_at": "2026-10-17T09:30:00Z" }
+      ]
+    },
+    {
+      "schema_version": "ssr.query-result.v1",
+      "query_id": "query-2026-0003",
+      "run_id": "run-2026-0002",
+      "message_id": "msg-2026-0002",
+      "question_id": "q-2",
+      "query_type": "weather",
+      "status": "unavailable",
+      "materials": [],
+      "sources": []
+    }
+  ]
+}

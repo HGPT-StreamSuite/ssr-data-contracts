@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SSR Query Request v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "query_id", "run_id", "message_id", "question_id", "query_type", "query_text"],
+  "properties": {
+    "schema_version": { "const": "ssr.query-request.v1" },
+    "query_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "message_id": { "type": "string", "minLength": 1 },
+    "question_id": { "type": "string", "minLength": 1 },
+    "query_type": { "enum": ["weather", "person", "game_info", "game_guide", "game_item"] },
+    "query_text": { "type": "string", "minLength": 1 }
+  }
+}
