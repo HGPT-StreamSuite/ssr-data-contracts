@@ -1,0 +1,15 @@
+{
+  "origin": "Actual Node execution in this thread before the repair; not a reconstructed pass",
+  "observedAt": "2026-11-05T20:47:26.093Z",
+  "head": "c3bafc6432e1eed68b3d088f8bba558f04ca115b",
+  "sourceFingerprint": "bad7a88a5c5b05a53bed9586441e29f577222a86cd6e437e4421bef8fa062383",
+  "entry": "validator.validate(value, 'chat-event.schema.json', schemas)",
+  "syntheticBase": "examples/chat-event.example.json",
+  "changedField": "occurred_at",
+  "cases": [
+    {"value":"2026-02-30T09:31:00Z","expected_valid":false,"actual":{"valid":true,"errors":[]}},
+    {"value":"2026-04-31T09:31:00Z","expected_valid":false,"actual":{"valid":true,"errors":[]}},
+    {"value":"2026Z","expected_valid":false,"actual":{"valid":true,"errors":[]}}
+  ],
+  "conclusion": "fail: Date.parse normalized invalid calendar dates or accepted a non date-time string"
+}

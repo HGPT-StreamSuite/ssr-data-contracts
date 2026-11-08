@@ -1,0 +1,58 @@
+{
+  "audit_version": "ssr.interface-audit.v1",
+  "scope": "ssr-data-contracts only; synthetic inputs; no network, service, storage, identity resolution or ACL grant",
+  "wire_contract_set": "v0.1",
+  "wire_schema_count": 9,
+  "entries": [
+    {"kind":"cli","path":"tools/validate_examples.mjs","input":"14 repo fixtures","output":"human-readable lines","exit_codes":[0,1]},
+    {"kind":"cli","path":"tools/validate_contract.mjs","input":"one UTF-8 JSON through stdin or explicit regular file; exact schema filename","output_schema":"interfaces/validation-result.schema.json","exit_codes":[0,1,2,3]},
+    {"kind":"node_library","path":"tools/contracts-api.mjs","exports":["getContract","listContracts","validateContract","validateContractText","exitCodeFor"],"output_version":"ssr.contract-validation-result.v1"},
+    {"kind":"shared_core","path":"tools/contract-validator.js","exports":["validate","parseAndValidate"],"output":"valid/errors"},
+    {"kind":"browser","path":"web/index.html","input":"editable synthetic JSON","implementation":"calls shared core for the current input","actual_browser_verification":"blocked; existing refusal preserved"}
+  ],
+  "findings": [
+    {"id":"calendar-normalization","implementation":"repaired","before_evidence":"docs/acceptance/pre-fix-datetime.json","verification":"tests/interfaces.test.mjs; actual same-version results in docs/acceptance/latest.json"},
+    {"id":"missing-machine-cli","implementation":"added compatible CLI and Node API; existing example CLI preserved","verification":"interfaces/validation-cases.json and actual subprocess receipts in docs/acceptance/latest.json"},
+    {"id":"source-fingerprint-coverage","implementation":"bind new code, tests and interface contracts into source snapshot","verification":"executable source coverage contract test"},
+    {"id":"browser-real-use","status":"blocked","evidence":"docs/acceptance/ui.json","substituted_by_node_tests":false}
+  ],
+  "semantics": {
+    "input_text":"never rewritten or persisted by validator",
+    "time":"explicit timezone and real calendar date; original string preserved",
+    "identity":"opaque IDs, no account resolution or display-name merging",
+    "source_id":"citation source reference, not code/runtime fingerprint",
+    "scope_policy_acl":"absent from legacy wire; validation does not authorize any operation",
+    "empty_result":"can be schema-valid; business status preserved",
+    "resend":"stateless deterministic validation only",
+    "revision_current_history":"not implemented; requires native provider/consumer policy"
+  },
+  "cross_repo": [
+    {
+      "id":"evidence-is-not-record",
+      "status":"coordination_required",
+      "comparison_source":"snapshots/imported-components/contracts-v1.0.1/contracts_v1.0.1.json",
+      "provider_role":"native importer/store Evidence output; actual owner/binding to be confirmed by coordinator",
+      "consumer_role":"native reader requiring full Record; actual owner/binding to be confirmed by coordinator",
+      "record_required_but_missing_from_evidence":["schema_version","record_kind","access_scope"],
+      "evidence_only_required_fields":["layer","source_kind","match_reasons","rank"],
+      "compatible_options":["provider returns original Record with same source/revision and trusted ACL","consumer exposes an explicit Evidence-reader interface with defined policy"],
+      "prohibited_shortcuts":["relabel Evidence as Record","guess ACL or revision","loosen source binding","merge mixed snapshots"],
+      "actual_cross_repo_runtime_verified":false
+    },
+    {
+      "id":"legacy-to-native-query",
+      "status":"coordination_required",
+      "provider":"legacy ssr.query-request.v1 producer",
+      "consumer":"native 1.0.1 Query consumer",
+      "explicit_mapping_candidates":{"query_id":"request_id","query_text":"text"},
+      "trusted_context_required":["scope","actor_account_id","person_id","time_from","time_to","exclude_event_ids","limit","layer","conditions","access_scope"],
+      "notes":"query_type needs explicit intent/domain mapping; wire schema_version is not interchangeable; weather has no defined native target"
+    }
+  ],
+  "evidence": {
+    "same_version_receipts":"docs/acceptance/latest.json",
+    "source_snapshot_includes_dirty_code":true,
+    "real_llm_or_platform":"not_run",
+    "http_or_browser_retry":"not_run"
+  }
+}

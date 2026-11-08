@@ -1,0 +1,33 @@
+{
+  "status": "defined",
+  "overallResult": "blocked",
+  "appliesTo": "all_repositories",
+  "details": {
+    "criterion": "網頁必須能在使用者的預設瀏覽器實際開啟並可操作、運作正常。",
+    "requiredEvidence": "實際在預設瀏覽器看到頁面，操作本 repo 適用的輸入、輸出和錯誤流程，留下真實操作證據與結果；程式存在、HTTP 成功或模擬 DOM／後端測試均不能替代。"
+  },
+  "message": "所有 repo 的共通門檻都是預設瀏覽器實際開啟並正常操作。本頁實際瀏覽器驗收受阻，尚未通過；功能測試不能替代。",
+  "functionalCasesReplaceCommonStandard": false,
+  "verification": {
+    "defaultBrowser": "not_verified",
+    "actualPageOpen": "not_run",
+    "functionalInteraction": "not_run",
+    "evidence": ["docs/acceptance/ui.json"],
+    "reason": "先前必要的 file: 導覽在載入前遭瀏覽器政策拒絕，且不得重試或換路徑繞過；沒有真實瀏覽器畫面與操作證據。",
+    "priorDenialNotRetried": true
+  },
+  "applicability": [
+    {
+      "topic": "預設瀏覽器可開啟運作的共通門檻",
+      "status": "applicable",
+      "reason": "使用者明訂所有 repo 採同一門檻，本 repo 不能豁免或以其他測試替代。",
+      "evidence": ["docs/ACCEPTANCE.md"]
+    },
+    {
+      "topic": "目前靜態網頁的後端服務啟停操作",
+      "status": "not_applicable",
+      "reason": "目前頁面只載入本 repo 靜態資源與瀏覽器內驗證核心，沒有後端服務可啟停；此理由僅描述現有功能，不構成共用標準豁免。",
+      "evidence": ["web/index.html", "web/app.js", "tools/contract-validator.js"]
+    }
+  ]
+}

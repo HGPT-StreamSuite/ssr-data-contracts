@@ -1,0 +1,39 @@
+{
+  "status": "blocked",
+  "observedAt": "2026-11-05T18:36:26.4939667Z",
+  "timestampKind": "記錄拒絕結果的時間，不代表成功開啟頁面",
+  "sourceFingerprint": "f6c6db3f0687362e8cfaab917a900b5b58c4e1a98a1c4212b3595af1c042e9ec",
+  "attemptedAction": "cua.createBrowserTab",
+  "browser": "chrome",
+  "target": "web/index.html",
+  "requestedProtocol": "file:",
+  "outcome": "denied_before_navigation",
+  "retried": false,
+  "blocker": "Browser URL policy rejected file: protocol; allowed protocols are http: and https:. No authority was granted. The denied operation was stopped; no alternate browser surface, server, port or executor was used.",
+  "checks": [
+    {
+      "name": "本機檔案開啟",
+      "status": "denied",
+      "actual": "瀏覽器工具在導覽前拒絕 file: URL；沒有成功載入。"
+    },
+    {
+      "name": "實際輸入、輸出、錯誤、重複提交、取消及返回",
+      "status": "not_run",
+      "actual": "只有 Node DOM 狀態測試通過，未進行真正瀏覽器操作。"
+    },
+    {
+      "name": "桌面／窄視窗與鍵盤",
+      "status": "not_run",
+      "actual": "政策阻塞，未取得畫面或實際鍵盤操作證據。"
+    },
+    {
+      "name": "使用者預設瀏覽器的呈現與輸入輸出",
+      "status": "not_run",
+      "actual": "未確認 Chrome 為預設瀏覽器，也沒有成功載入頁面；先前必要的 file: 導覽已拒，依禁止重試限制停止此步驟。"
+    }
+  ],
+  "defaultBrowserStatus": "not_verified",
+  "defaultBrowserCheckStatus": "not_run",
+  "latestInstructionHandling": "共通門檻已明訂為預設瀏覽器可開啟運作；目前無實際畫面或操作證據，結果仍 blocked。標準更正不重新授權已拒操作，沒有重試或轉用其他路徑。",
+  "commonGateOutcome": "blocked"
+}

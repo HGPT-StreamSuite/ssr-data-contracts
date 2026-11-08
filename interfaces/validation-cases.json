@@ -1,0 +1,9 @@
+[
+  {"id":"stdin-valid","args":["--schema","chat-event.schema.json","--stdin"],"input_file":"examples/chat-event.example.json","expected_exit":0,"expected_status":"valid","expected_valid":true},
+  {"id":"file-valid","args":["--schema","chat-event.schema.json","--input","examples/chat-event.example.json"],"expected_exit":0,"expected_status":"valid","expected_valid":true},
+  {"id":"required-field-rejection","args":["--schema","chat-event.schema.json","--stdin"],"input_text":"{\"schema_version\":\"ssr.chat-event.v1\"}","expected_exit":1,"expected_status":"invalid","expected_valid":false,"error_includes":"message_id"},
+  {"id":"empty-input","args":["--schema","chat-event.schema.json","--stdin"],"input_text":"","expected_exit":2,"expected_status":"input_error","expected_valid":false,"error_includes":"請輸入"},
+  {"id":"invalid-json","args":["--schema","chat-event.schema.json","--stdin"],"input_text":"{","expected_exit":2,"expected_status":"input_error","expected_valid":false,"error_includes":"JSON 解析失敗"},
+  {"id":"unknown-schema","args":["--schema","../not-a-contract.schema.json","--stdin"],"input_text":"{}","expected_exit":2,"expected_status":"usage_error","expected_valid":false},
+  {"id":"valid-repeat","args":["--schema","chat-event.schema.json","--stdin"],"input_file":"examples/chat-event.example.json","expected_exit":0,"expected_status":"valid","expected_valid":true}
+]

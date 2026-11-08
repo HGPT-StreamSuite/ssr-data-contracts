@@ -1,0 +1,68 @@
+[
+  {
+    "id": "F01",
+    "title": "內建範例與 CLI 一致",
+    "input": "14 份合成範例、9 份 schema",
+    "expected": "共用核心 14/14 通過，沒有遺漏範例或 schema。"
+  },
+  {
+    "id": "F02",
+    "title": "欄位與格式拒絕",
+    "input": "缺欄位、錯型別／enum、額外欄位、無時區時間",
+    "expected": "失敗結果帶 JSON 路徑，不拋未處理例外。"
+  },
+  {
+    "id": "F03",
+    "title": "輸入驗證狀態關聯",
+    "input": "valid/invalid、normalized_event、ingest_id",
+    "expected": "接受正確關聯；合法 invalid 記錄可符合契約。"
+  },
+  {
+    "id": "F04",
+    "title": "路由語意",
+    "input": "三種 disposition 及 next_step/message_id",
+    "expected": "正確到 fixed_sop 或 question_analysis，拒絕錯誤組合。"
+  },
+  {
+    "id": "F05",
+    "title": "快照與來源一致",
+    "input": "snapshot/run/message 關聯及素材 source_ids",
+    "expected": "拒絕錯配快照、執行 ID 與不存在的來源。"
+  },
+  {
+    "id": "F06",
+    "title": "不合法與過量輸入",
+    "input": "空白、非法 JSON、未知 schema、超過 256 KiB/64 層/20,000 節點",
+    "expected": "明確解析或限制錯誤，舊成功狀態失效。"
+  },
+  {
+    "id": "F07",
+    "title": "編輯與重複操作",
+    "input": "載入、編輯、重複提交、清除／復原、返回",
+    "expected": "實際輸入對應結果；改動即過期；返回不丟失資料。"
+  },
+  {
+    "id": "F08",
+    "title": "批次與取消",
+    "input": "全部範例、中途取消與再次執行",
+    "expected": "只呈現實際完成數，取消不宣稱全部通過。"
+  },
+  {
+    "id": "F09",
+    "title": "離線與可操作性",
+    "input": "檔案開啟、桌面／窄視窗、鍵盤焦點",
+    "expected": "無外部依賴、控制項有標籤、焦點可見；未做的 UI 檢查明列。"
+  },
+  {
+    "id": "F10",
+    "title": "同版證據與隔離",
+    "input": "來源指紋、bundle、Node/UI 紀錄",
+    "expected": "證據有精確版本與輸出，不含真實資料或完整本機環境。"
+  },
+  {
+    "id": "F11",
+    "title": "可串接的 CLI 與 Node 接口",
+    "input": "stdin／一般檔案的合成 UTF-8 JSON、明確 schema、合法與不合法案例",
+    "expected": "同次輸入取得固定 JSON 收據及明確 exit code；日期不被正規化、重送無寫入副作用，不替代瀏覽器驗收。"
+  }
+]

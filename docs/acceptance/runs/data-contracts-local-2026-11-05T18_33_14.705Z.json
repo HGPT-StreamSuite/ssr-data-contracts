@@ -1,0 +1,180 @@
+{
+  "id": "data-contracts-local-2026-11-05T18:33:14.705Z",
+  "startedAt": "2026-11-05T18:33:14.705Z",
+  "finishedAt": "2026-11-05T18:33:15.201Z",
+  "status": "pass",
+  "scope": "本 repo 有限 schema 子集與離線工作台；只使用合成資料。",
+  "version": {
+    "head": "c3bafc6432e1eed68b3d088f8bba558f04ca115b",
+    "branch": "main",
+    "dirty": [
+      " M README.md",
+      " M tools/validate_examples.mjs",
+      "?? docs/ACCEPTANCE.md",
+      "?? docs/acceptance-criteria.json",
+      "?? tests/contract-validator.test.mjs",
+      "?? tests/workbench.test.mjs",
+      "?? tools/build_workbench.mjs",
+      "?? tools/contract-validator.js",
+      "?? tools/record_acceptance.mjs",
+      "?? tools/workbench-data.mjs",
+      "?? web/app.js",
+      "?? web/data.js",
+      "?? web/index.html",
+      "?? web/styles.css"
+    ]
+  },
+  "sourceUnchangedDuringTests": true,
+  "source": {
+    "fingerprint": "f6c6db3f0687362e8cfaab917a900b5b58c4e1a98a1c4212b3595af1c042e9ec",
+    "files": {
+      "README.md": "248e9e7080ac0f355e02cdc9a1c9cf7e3e5e734706c00b43fec0723cf1f1743d",
+      "contracts/v0.1/answer-prompt-input.schema.json": "426cfb2b023153dd22fea916b7a85626c8ebd0df16f5d5e22197c28fd978d7ce",
+      "contracts/v0.1/answer-run-record.schema.json": "a619180c46981e3b312ea0a11a9d038cea8fab4fc94658f9af6c437a462cd940",
+      "contracts/v0.1/chat-event.schema.json": "2d710a75a1baaf618b782e9ef394442b9a8d57328f1733693dc64f87166466c3",
+      "contracts/v0.1/context-snapshot.schema.json": "eb84c2bf2bb077a671a1f6b0ad66ebb6700210c1153ba45a7f0a8670741bd84a",
+      "contracts/v0.1/ingest-attempt.schema.json": "2aeb77ff8e5c02362d96a38439b5831f63439307f2ccb28c74bd365a8233e741",
+      "contracts/v0.1/query-request.schema.json": "27574369eb6dfa4c6edc3a79e3b0bf844a1ad8fc6426f128af89a7ca9af4a47a",
+      "contracts/v0.1/query-result.schema.json": "e3aebba2aea237e1b5d5afd25118b529c660bac8645e6fc3c83980767aa4f021",
+      "contracts/v0.1/question-analysis.schema.json": "f30200b7db71889c3fcd4052e96223984f9bfa0d2a624d2e6be5fe95723f6627",
+      "contracts/v0.1/routing-decision.schema.json": "37cc31d0453c561b25a67581e5b1dca6969795eaa56e73f2260757ba41bd4a7c",
+      "docs/ACCEPTANCE.md": "7d89aad3d64b02df23416d158d66ed98a0a029efd6c3b6920ae344f53336a4da",
+      "docs/acceptance-criteria.json": "d3646eaeac1b79f2b17107ad55a10059cfc3383ad76ed0cd18aa246f2c144f51",
+      "examples/answer-prompt-input.example.json": "4c7fdb2350172bd2ee6ceebdb3c102a718408270cdeeb948de235c99bcff26fc",
+      "examples/answer-run-record.example.json": "e6696f9efa572876087ec631dbc67add5252ca566cbad2441801f955bc8640a9",
+      "examples/chat-event.example.json": "d3f3f9a432dd2efe0beb9288358ab63575798c9a236fc0d0582eb9e604b173a2",
+      "examples/context-snapshot.example.json": "11d5ed5f71cb5bd9822d322a1e08607d13e4e6ce1164f4f2da7d4271f3200e94",
+      "examples/ingest-attempt.example.json": "92bd0593e00cb2ef970c68bfd4c13e969f344c60cc481b08c1b3ac47740e0204",
+      "examples/query-request.game-guide.example.json": "cf47f7040289b1da02de8c837302319d894e4b1c9649ccb9900accadaeb62855",
+      "examples/query-request.game-info.example.json": "6e39b6788c4cd4d1cddd519c3b63d44fbffdff52430069581eda4df1257cde86",
+      "examples/query-request.game-item.example.json": "f4fe149782a13605804cd235d7a33b484e588c79148d6bc56a974f21db11b68b",
+      "examples/query-request.person.example.json": "5ac8c00f6e6cdbba164c91dad43bb1d391889263fc5fe968974300d427251495",
+      "examples/query-request.weather.example.json": "fcde8519c6800a80597b1bdbe3dc87a64c019c1f78b4d938fe90a4bd5c4397cf",
+      "examples/query-result.example.json": "c8b005d20245d01f83fdda25dd8d99d14fed976d343aac7b32127f6914fc4aec",
+      "examples/query-result.weather.example.json": "6eb0d32785c244f84a91d4da3601f3905bf1fcb1e8d7a6c28f26d066148b8d3a",
+      "examples/question-analysis.example.json": "61ceb11d333a1b3a36d449134ddbbb5c8ffa1f207e5375f1d89fab1882e72be4",
+      "examples/routing-decision.example.json": "10fafae67f5f375b10c8bf9596254f45eba6255b4aefdfd4fe946d3461a845a8",
+      "tests/contract-validator.test.mjs": "032e41203bef5e7957100219bd38b1e00d752ffb7d9811c22c60d230f7b18ab7",
+      "tests/workbench.test.mjs": "ca71fd887dec8ef0cfe63d24cadeaa852d44ba5c0b5e34b5815d3a532ce94b2a",
+      "tools/build_workbench.mjs": "ef56299ad6d2af2265fdde06fd7a9cc0cac931453ddff528f9320a1473fb4466",
+      "tools/contract-validator.js": "34997ed3ca2f5caca826f0b2217023365054dc12b1b464cbb1a23460eb30bc7b",
+      "tools/record_acceptance.mjs": "44fe940e61dd347eec638c034d00cf4b0a07f7c857a6a87468db881256c0ee5e",
+      "tools/validate_examples.mjs": "f20d5d54764c09c5f1669fef182a050ab0111b4aa989f3bdb9c868132bdaa319",
+      "tools/workbench-data.mjs": "73e36cbc9928cf0cfbe98e56c61c4c6499e0d99ca48f2e4c6eb3bd55a8eebe83",
+      "web/app.js": "39809bb09319b1aab00222e7ce7eab73ace6bebed1a2703fbabae9c3210abed6",
+      "web/index.html": "f42e84daf95961da46b2823f7a552960eb83cdf300d1d77eecdaf60ea56c86f2",
+      "web/styles.css": "7e022fb5d71474a6e6e52495ef8a75edc51a6e00a19450f7982ac079e192b995"
+    }
+  },
+  "runtime": {
+    "node": "v24.13.0",
+    "preloadAndCoverage": "disabled",
+    "compileCache": "disabled"
+  },
+  "inputs": [
+    {
+      "example": "examples/ingest-attempt.example.json",
+      "schema": "contracts/v0.1/ingest-attempt.schema.json"
+    },
+    {
+      "example": "examples/chat-event.example.json",
+      "schema": "contracts/v0.1/chat-event.schema.json"
+    },
+    {
+      "example": "examples/routing-decision.example.json",
+      "schema": "contracts/v0.1/routing-decision.schema.json"
+    },
+    {
+      "example": "examples/context-snapshot.example.json",
+      "schema": "contracts/v0.1/context-snapshot.schema.json"
+    },
+    {
+      "example": "examples/question-analysis.example.json",
+      "schema": "contracts/v0.1/question-analysis.schema.json"
+    },
+    {
+      "example": "examples/query-request.weather.example.json",
+      "schema": "contracts/v0.1/query-request.schema.json"
+    },
+    {
+      "example": "examples/query-request.person.example.json",
+      "schema": "contracts/v0.1/query-request.schema.json"
+    },
+    {
+      "example": "examples/query-request.game-info.example.json",
+      "schema": "contracts/v0.1/query-request.schema.json"
+    },
+    {
+      "example": "examples/query-request.game-guide.example.json",
+      "schema": "contracts/v0.1/query-request.schema.json"
+    },
+    {
+      "example": "examples/query-request.game-item.example.json",
+      "schema": "contracts/v0.1/query-request.schema.json"
+    },
+    {
+      "example": "examples/query-result.example.json",
+      "schema": "contracts/v0.1/query-result.schema.json"
+    },
+    {
+      "example": "examples/query-result.weather.example.json",
+      "schema": "contracts/v0.1/query-result.schema.json"
+    },
+    {
+      "example": "examples/answer-prompt-input.example.json",
+      "schema": "contracts/v0.1/answer-prompt-input.schema.json"
+    },
+    {
+      "example": "examples/answer-run-record.example.json",
+      "schema": "contracts/v0.1/answer-run-record.schema.json"
+    }
+  ],
+  "syntheticBoundaryCases": "tests/contract-validator.test.mjs；UI 狀態與檔案隔離：tests/workbench.test.mjs",
+  "runs": [
+    {
+      "executable": "node",
+      "args": [
+        "tools/validate_examples.mjs"
+      ],
+      "startedAt": "2026-11-05T18:33:14.706Z",
+      "finishedAt": "2026-11-05T18:33:14.776Z",
+      "exitCode": 0,
+      "stdout": "OK  ingest-attempt.example.json -> ingest-attempt.schema.json\nOK  chat-event.example.json -> chat-event.schema.json\nOK  routing-decision.example.json -> routing-decision.schema.json\nOK  context-snapshot.example.json -> context-snapshot.schema.json\nOK  question-analysis.example.json -> question-analysis.schema.json\nOK  query-request.weather.example.json -> query-request.schema.json\nOK  query-request.person.example.json -> query-request.schema.json\nOK  query-request.game-info.example.json -> query-request.schema.json\nOK  query-request.game-guide.example.json -> query-request.schema.json\nOK  query-request.game-item.example.json -> query-request.schema.json\nOK  query-result.example.json -> query-result.schema.json\nOK  query-result.weather.example.json -> query-result.schema.json\nOK  answer-prompt-input.example.json -> answer-prompt-input.schema.json\nOK  answer-run-record.example.json -> answer-run-record.schema.json\n\n通過：14 組範例與目前檢查器支援的 schema 子集一致。\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "executable": "node",
+      "args": [
+        "--test",
+        "tests/contract-validator.test.mjs",
+        "tests/workbench.test.mjs"
+      ],
+      "startedAt": "2026-11-05T18:33:14.776Z",
+      "finishedAt": "2026-11-05T18:33:14.999Z",
+      "exitCode": 0,
+      "stdout": "✔ C01 accepted synthetic fixture: ingest-attempt.example.json (1.8232ms)\n✔ C01 accepted synthetic fixture: chat-event.example.json (0.3537ms)\n✔ C01 accepted synthetic fixture: routing-decision.example.json (0.2533ms)\n✔ C01 accepted synthetic fixture: context-snapshot.example.json (0.2666ms)\n✔ C01 accepted synthetic fixture: question-analysis.example.json (0.2516ms)\n✔ C01 accepted synthetic fixture: query-request.weather.example.json (0.2615ms)\n✔ C01 accepted synthetic fixture: query-request.person.example.json (0.2202ms)\n✔ C01 accepted synthetic fixture: query-request.game-info.example.json (0.2298ms)\n✔ C01 accepted synthetic fixture: query-request.game-guide.example.json (0.2372ms)\n✔ C01 accepted synthetic fixture: query-request.game-item.example.json (0.2879ms)\n✔ C01 accepted synthetic fixture: query-result.example.json (0.3319ms)\n✔ C01 accepted synthetic fixture: query-result.weather.example.json (0.232ms)\n✔ C01 accepted synthetic fixture: answer-prompt-input.example.json (0.3774ms)\n✔ C01 accepted synthetic fixture: answer-run-record.example.json (0.398ms)\n✔ C02 rejects missing field (0.4278ms)\n✔ C02 rejects wrong type (0.2887ms)\n✔ C02 rejects unknown property (0.238ms)\n✔ C02 rejects unknown enum (0.2223ms)\n✔ C02 rejects wrong version (0.2211ms)\n✔ C02 rejects empty text (0.2236ms)\n✔ C02 rejects missing timezone (0.2165ms)\n✔ C02 rejects invalid date (0.2136ms)\n✔ C02 rejects null nested value (0.2176ms)\n✔ C02 rejects invalid array item (0.2429ms)\n✔ C03 valid ingest requires normalized event and matching ingest_id (0.4076ms)\n✔ C03 invalid ingest cannot carry normalized event (0.5709ms)\n✔ C04 routing invalid positive and negative combinations (0.3033ms)\n✔ C04 routing not_triggered positive and negative combinations (0.2082ms)\n✔ C04 routing triggered positive and negative combinations (0.2392ms)\n✔ C04 valid routing needs message_id but invalid routing may omit it (0.3424ms)\n✔ C05 rejects mismatched snapshot (0.3514ms)\n✔ C05 rejects mismatched analysis run (0.3712ms)\n✔ C05 rejects mismatched analysis message (0.3088ms)\n✔ C05 rejects mismatched query run (0.2934ms)\n✔ C05 rejects mismatched query message (0.3245ms)\n✔ C05 rejects dangling source reference including nested prompt results (0.9581ms)\n✔ C05 unavailable weather must not claim material or source (0.4383ms)\n✔ C06 empty, malformed JSON, null and unknown schema fail safely (0.1467ms)\n✔ C06 input limit counts UTF-8 bytes (0.5575ms)\n✔ C06 rejects deeply nested and excessive node input (2.0692ms)\n✔ C06 unknown schema keywords and external references fail closed (0.1238ms)\n✔ C07 repeated validation is deterministic and immutable (0.2912ms)\n✔ C01 browser and CLI core accept identical 14 fixtures (19.8244ms)\n✔ C07 loading, validating, editing and errors never reuse old pass (6.7932ms)\n✔ C07 duplicate submit, clear and undo are isolated (7.0564ms)\n✔ C07 contract switch invalidates result but preserves input (6.2917ms)\n✔ C07 tabs, keyboard arrows and return preserve draft (6.0265ms)\n✔ C08 batch computes 14 results; duplicate start does not overlap (7.8492ms)\n✔ C08 cancel cannot become pass and later run starts clean (6.4217ms)\n✔ C08 editing during batch invalidates pending callbacks (6.3352ms)\n✔ C09 resources stay local and UI uses no network or persistence API (1.2165ms)\n✔ C10 bundle matches current schema/example/source snapshot (9.9384ms)\nℹ tests 52\nℹ suites 0\nℹ pass 52\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 164.871\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "executable": "node",
+      "args": [
+        "tools/build_workbench.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-11-05T18:33:14.999Z",
+      "finishedAt": "2026-11-05T18:33:15.077Z",
+      "exitCode": 0,
+      "stdout": "PASS web/data.js 與來源、合成範例及已保存證據一致。\n",
+      "stderr": "",
+      "error": null
+    }
+  ],
+  "uiStatus": "瀏覽器實際操作另見 ui.json；沒有該紀錄時為未驗證。",
+  "notRun": [
+    "完整 Draft 2020-12 meta-schema",
+    "完整 RFC 3339",
+    "跨 repo adapter／真實平台／來源真實性"
+  ]
+}

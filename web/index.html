@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>SSR Data Contracts · 本機驗證工作台</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="../tools/contract-validator.js"></script>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">跳至主要內容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="mark" aria-hidden="true">{ }</span><div>StreamSuite<small>DATA CONTRACTS</small></div></div>
+      <div class="workspace-label">獨立檢視工作區</div>
+      <nav aria-label="工作台頁籤" role="tablist" aria-orientation="vertical">
+        <button id="tab-workbench" class="nav-item" role="tab" aria-selected="true" aria-controls="view-workbench" data-view="workbench"><span aria-hidden="true">01</span> 驗證工作台</button>
+        <button id="tab-criteria" class="nav-item" role="tab" aria-selected="false" aria-controls="view-criteria" tabindex="-1" data-view="criteria"><span aria-hidden="true">02</span> 標準與測例</button>
+        <button id="tab-evidence" class="nav-item" role="tab" aria-selected="false" aria-controls="view-evidence" tabindex="-1" data-view="evidence"><span aria-hidden="true">03</span> 證據與範圍</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="local-dot" aria-hidden="true"></span> 本機執行 · 無網路請求<small>v0.1 草稿 / 有限 schema 子集</small></div>
+    </aside>
+    <main id="workspace">
+      <header class="topbar"><span>ssr-data-contracts <span class="muted">/ 獨立檢視</span></span><span class="pill">離線設計</span></header>
+      <div class="content">
+        <div id="startup-error" class="notice danger" role="alert" hidden>頁面資源尚未載入。請先執行 node tools/build_workbench.mjs，再重新開啟此頁。</div>
+        <div class="notice" role="status"><div><strong>共通門檻：預設瀏覽器可開啟運作</strong><small id="common-status">本頁實際預設瀏覽器驗收受阻，尚未通過；功能測試、檔案存在或 HTTP 成功均不能替代。</small></div></div>
+        <section id="view-workbench" role="tabpanel" aria-labelledby="tab-workbench">
+          <div class="page-heading"><div><p class="eyebrow">CONTRACT WORKBENCH</p><h1>讓資料形狀，有據可查。</h1><p class="lead">載入合成範例，或貼上自己的測試 JSON。直接查看契約檢查結果。</p></div><div class="counts"><strong>9<span>份契約</span></strong><strong>14<span>組範例</span></strong></div></div>
+          <div class="notice"><span class="notice-icon" aria-hidden="true">i</span><div>此頁只驗證資料契約，不執行機器人或查詢真實資料。<small>請只輸入合成資料；輸入不會上傳或保存，重新整理即清除。通過契約不代表原始事件或來源內容有效。</small></div></div>
+          <div class="work-grid">
+            <section class="panel editor-panel" aria-labelledby="input-heading">
+              <div class="panel-heading"><h2 id="input-heading">輸入資料</h2><span class="caption">JSON / UTF-8</span></div>
+              <div class="field"><label for="schema">驗證契約</label><select id="schema"></select></div>
+              <div class="field"><label for="example">合成範例</label><div class="inline"><select id="example"></select><button id="load-example" class="button secondary">載入範例</button></div></div>
+              <div class="editor-label"><label for="payload">JSON 輸入</label><span id="byte-count" class="caption">0 B / 256 KiB</span></div>
+              <textarea id="payload" aria-describedby="input-help" spellcheck="false" placeholder="貼上合成 JSON，或按「載入範例」。"></textarea>
+              <p id="input-help" class="help">最大 256 KiB · 64 層 · 20,000 個節點。修改輸入後需要重新驗證。</p>
+              <div class="actions"><button id="validate" class="button primary">驗證此輸入 <span aria-hidden="true">→</span></button><button id="clear" class="button quiet">清除</button><button id="undo" class="button quiet" disabled>復原輸入</button></div>
+              <details class="schema-details"><summary>檢視所選 schema（唯讀）</summary><pre id="schema-preview" tabindex="0"></pre></details>
+            </section>
+            <div class="result-column">
+              <section class="panel" aria-labelledby="result-heading">
+                <div class="panel-heading"><h2 id="result-heading">驗證結果</h2><span class="caption">本次操作</span></div>
+                <div id="result-state" class="result-state idle" aria-live="polite" aria-atomic="true"><span id="status-symbol" class="status-symbol" aria-hidden="true">—</span><div><h3 id="status-title">尚未驗證</h3><p id="status-detail">選擇範例或輸入 JSON 後開始。</p></div></div>
+                <ul id="errors" class="error-list" hidden></ul>
+                <div class="output-heading">實際輸出 <span class="caption">唯讀 JSON</span></div>
+                <pre id="output" class="output" tabindex="0">{"status":"not_run"}</pre>
+              </section>
+              <section class="panel batch-panel" aria-labelledby="batch-heading">
+                <div class="panel-heading"><h2 id="batch-heading">內建範例回歸</h2><span class="pill subtle">合成資料</span></div>
+                <p class="help">依序執行全部 14 組範例。每次重新計算，不使用保存的通過結果。</p>
+                <div class="actions"><button id="run-all" class="button secondary">驗證全部範例</button><button id="cancel" class="button quiet" disabled>取消批次</button></div>
+                <p id="batch-progress" class="help" aria-live="polite">本頁尚未執行批次。</p>
+                <ol id="batch-results" class="batch-results"></ol>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section id="view-criteria" role="tabpanel" aria-labelledby="tab-criteria" hidden>
+          <div class="page-heading"><div><p class="eyebrow">COMMON STANDARD &amp; FUNCTIONAL CASES</p><h1>同一套標準，各自提供證據。</h1><p class="lead">共同要求是預設瀏覽器實際開啟並正常操作。本頁目前受阻，未通過網頁驗收。</p></div><button class="button secondary back" data-return>返回工作台</button></div>
+          <div class="notice"><div>本 repo 功能測例（F01–F11）<small>下列只描述具體合成輸入、預期輸出與錯誤邊界，並非本 repo 自訂的共用驗收門檻。已實測結果另見「證據與範圍」。</small></div></div>
+          <div id="criteria-list" class="criteria-grid"></div>
+          <section class="panel source-panel"><div class="panel-heading"><h2>不適用及理由</h2></div><div class="evidence-body"><p>預設瀏覽器可開啟運作的共通門檻適用於本 repo，不可豁免；目前是受阻，不是不適用或通過。</p><p>本頁沒有後端服務，因此「現有頁面的後端啟停操作」不適用；職責證據為 web/index.html、web/app.js 與 tools/contract-validator.js。此說明不構成共用標準豁免，也不是通過結果。</p></div></section>
+          <a class="document-link" href="../docs/ACCEPTANCE.md">閱讀共用驗收狀態與功能測例 ↗</a>
+          <a class="document-link" href="../docs/INTERFACES.md">閱讀接口、exit code 與對接邊界 ↗</a>
+        </section>
+        <section id="view-evidence" role="tabpanel" aria-labelledby="tab-evidence" hidden>
+          <div class="page-heading"><div><p class="eyebrow">EVIDENCE &amp; SCOPE</p><h1>把結果，連回同一份來源。</h1><p class="lead">已保存紀錄與本次互動分開呈現。來源快照改變後需要重建與重驗。</p></div><button class="button secondary back" data-return>返回工作台</button></div>
+          <div class="evidence-grid">
+            <section class="panel"><div class="panel-heading"><h2>已實測功能結果（Node）</h2><span id="saved-status" class="pill subtle">尚無紀錄</span></div><div id="saved-summary" class="evidence-body"></div><div id="saved-runs"></div></section>
+            <section class="panel"><div class="panel-heading"><h2>瀏覽器驗證紀錄</h2></div><div id="ui-summary" class="evidence-body"></div><div class="divider"></div><div class="evidence-body"><h3>範圍邊界</h3><ul class="scope-list"><li>可操作：合成 JSON、9 份契約、14 組內建範例。</li><li>只供閱讀：schema、驗收條件、保存的命令與輸出。</li><li>未涵蓋：完整 Draft 2020-12、完整 RFC 3339、來源真實性、跨 repo adapter、STT／ACL、真實平台。</li></ul></div></section>
+          </div>
+          <section class="panel source-panel"><div class="panel-heading"><h2>內嵌來源快照</h2><span class="caption">不是即時 Git 狀態</span></div><div class="evidence-body"><p class="help">本頁讀取產生時的本 repo 快照。修改來源後，執行 node tools/build_workbench.mjs；使用 --check 檢查是否新鮮。生成產物與證據檔不納入自身來源指紋。</p><code id="source-fingerprint" class="fingerprint"></code><details><summary>來源檔案與 SHA-256（唯讀）</summary><pre id="source-files" tabindex="0"></pre></details></div></section>
+        </section>
+        <footer>SSR Data Contracts <span>本機工具 · v0.1 草稿 · 不連接外部服務</span></footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -2,6 +2,8 @@
 
 v0.1 草稿，供 SSR 第一批 repo 討論與獨立驗證。此目錄定義跨 repo 的訊息形狀；它不是執行中的服務，也不指定資料庫、佇列、傳輸協定、部署方式或模型供應商。所有 schema 和範例均為提案，尚未接上真實平台。
 
+本次核查（2026-10-18）時，`ssr-data-contracts` 與 `ssr-system-assembly` 已在 HGPT-StreamSuite 以 Public 存在，預設分支為 `main`。本次只整理本機文件草稿，沒有建立、修改、刪除或推送遠端 repo，也沒有變更權限或憑證；後續是否發布本機草稿仍待使用者決定。
+
 ## 責任邊界
 
 - 本 repo 負責版本化的資料形狀、欄位語意、JSON 範例與範例檢查工具。
@@ -50,3 +52,29 @@ node tools/validate_examples.mjs
 檢查器會解析所有範例 JSON、依 schema 目前使用的子集檢查型別、必填欄位、列舉、陣列項目、額外欄位、日期時間格式，以及 ingest／路由／snapshot／run 的跨物件關係。它不是完整 JSON Schema validator 或 Draft 2020-12 meta-schema 驗證器；發布前仍應以支援 Draft 2020-12 的標準 validator 驗證 schema 與資料。
 
 修改契約時，請同步更新 schema、範例、檢查器（若使用到新的 schema 關鍵字）及此處語意。語意化版本與向後相容政策尚待決定；`v0.1` 只代表草稿版號。
+
+## 獨立本機檢視、共用標準與功能測例
+
+每個 repo 的共通門檻相同：網頁必須在使用者預設瀏覽器實際開啟並可操作、運作正常，且留下真實輸入、輸出與錯誤流程的操作證據。本 repo 的 F01–F11 是自己的具體功能測例，不是較低的替代門檻。現有功能測試通過不代表網頁驗收通過；共通門檻目前因瀏覽器政策拒絕而 blocked／未驗證。
+
+設計的開啟方式是以預設瀏覽器開啟 [web/index.html](web/index.html)，不需要安裝依賴、啟動服務或選擇埠；成功開啟後關閉頁籤即停止。本輪未成功載入頁面，尚無已驗證可用網址。只輸入合成 JSON，不貼入真實個資或秘密；頁面設計不發送網路請求、不保存自訂輸入，重新整理後清除。
+
+工作台可載入 14 組範例、選擇 9 份契約、自訂 JSON 驗證、檢視實際輸出與錯誤、批次驗證／取消、清除／復原輸入。schema、共用標準狀態、功能測例及保存證據只供閱讀。CLI 與頁面共用 tools/contract-validator.js，既有的路由、ingest、snapshot、run 與來源引用規則也用於自訂輸入；這不是完整 JSON Schema validator 或業務來源驗證。
+
+共用標準狀態、功能測例、不適用理由與未測／阻塞見 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。首次使用或修改來源後，在 repo 根目錄執行：
+
+    node tools/build_workbench.mjs
+    node tools/validate_examples.mjs
+    node --test tests/contract-validator.test.mjs tests/workbench.test.mjs tests/interfaces.test.mjs
+    node tools/build_workbench.mjs --check
+
+需要保存本輪合成驗收證據時，執行 node tools/record_acceptance.mjs；只更新 docs/acceptance 下的合成紀錄（含逐輪保存）與 web/data.js。頁面分開顯示「本次互動」與「已保存 Node／UI 紀錄」，來源不同時標示過期。Node DOM 狀態測試不能取代真正瀏覽器的視覺與鍵盤驗證。
+
+## 可串接的驗證入口與出口
+
+自訂合成 JSON 可使用固定 JSON 收據的 CLI；不需要服務或依賴安裝：
+
+    node tools/validate_contract.mjs --schema chat-event.schema.json --input examples/chat-event.example.json
+    node tools/validate_contract.mjs --schema chat-event.schema.json --stdin
+
+stdout 是 interfaces/validation-result.schema.json 定義的單一收據；exit 0 表示符合契約，1 表示契約拒絕，2 表示輸入／使用錯誤，3 表示內部錯誤。這些收據不是 chat/query 的 wire 訊息。Node library 與格式／identity／scope／ACL／重送邊界見 [docs/INTERFACES.md](docs/INTERFACES.md)；可執行合成案例及跨 repo 欄位差異見 interfaces/validation-cases.json 與 interfaces/audit.json。

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contract validator result, not a chat/query wire message",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_set", "schema_name", "contract_schema_version", "status", "valid", "errors"],
+  "properties": {
+    "schema_version": {"const": "ssr.contract-validation-result.v1"},
+    "contract_set": {"const": "v0.1"},
+    "schema_name": {"type": "string"},
+    "contract_schema_version": {"type": "string"},
+    "status": {"enum": ["valid", "invalid", "input_error", "usage_error", "error"]},
+    "valid": {"type": "boolean"},
+    "errors": {"type": "array", "items": {"type": "string"}}
+  }
+}
